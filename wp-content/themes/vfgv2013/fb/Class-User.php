@@ -54,7 +54,7 @@ class User extends DB {
 					return assertNumeric($value);
 					break;
 			default:
-				return mysql_escape_string($value);
+				return mysql_real_escape_string($value);
 		}
 	}
 

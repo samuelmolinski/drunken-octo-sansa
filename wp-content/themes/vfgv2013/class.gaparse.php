@@ -29,7 +29,7 @@ class GA_Parse
   var $current_visit_started;	// Current visit started at
   var $times_visited;		// Times visited
 
-  function __construct($_COOKIE) {
+  function __construct() {
        $this->utmz = $_COOKIE["__utmz"];
        $this->utma = $_COOKIE["__utma"];
        $this->ParseCookies();
@@ -73,7 +73,7 @@ class GA_Parse
        $time_initial_visit,
        $time_beginning_previous_visit,
        $time_beginning_current_visit,
-       $session_counter) = split('[\.]', $this->utma);
+       $session_counter) = preg_split('[\.]', $this->utma);
 
   $this->first_visit = date("d M Y - H:i",$time_initial_visit);
   $this->previous_visit = date("d M Y - H:i",$time_beginning_previous_visit);

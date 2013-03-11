@@ -16,13 +16,15 @@
 
 // ** Configurações do MySQL - Você pode pegar essas informações com o serviço de hospedagem ** //
 /** O nome do banco de dados do WordPress */
-define('DB_NAME', 'vfgv2013CLONE');
+define('DB_NAME', 'vfgv2013clone');
 
 /** Usuário do banco de dados MySQL */
-define('DB_USER', 'root');
+//define('DB_USER', 'root');
+define('DB_USER', 'admin');
 
 /** Senha do banco de dados MySQL */
-define('DB_PASSWORD', '123!!@qwe');
+//define('DB_PASSWORD', '123!!@qwe');
+define('DB_PASSWORD', '1234');
 
 /** Usuário do banco de dados MySQL */
 //define('DB_USER', 'admin');
@@ -39,8 +41,9 @@ define('DB_CHARSET', 'utf8');
 /** O tipo de collate do banco de dados. Não altere isso se tiver dúvidas. */
 define('DB_COLLATE', '');
 
-define('FORCE_SSL_LOGIN', true);
-define('FORCE_SSL_ADMIN', true);
+//define('FORCE_SSL_LOGIN', true);
+//define('FORCE_SSL_ADMIN', true);
+
 /**#@+
  * Chaves únicas de autenticação e salts.
  *
