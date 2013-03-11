@@ -171,7 +171,7 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 			_gaq.push(['_setAllowHash', false]);
 			_gaq.push(['_setAllowLinker', true]);
 			
-			function checkIfAnalyticsLoaded() {
+			/*function checkIfAnalyticsLoaded() {
 			   if (window._gat && window._gat._getTracker && self.location == top.location) {
 				// Create a fake URL that we can filter in Google Analytics. This pageview also sends the traffic/campaign data to Google Analytics. Consider naming the fake URL so you can differentiate between the different Iframes.
 				_gaq.push(['_trackPageview', '/facebookFanPage/<?php echo html_entity_decode(get_the_title($activePost)); ?>/']); //needs to be the same for post single and page
@@ -180,14 +180,14 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 				//console.debug('1');
 				} else if (self.location != top.location) {
 				 _gaq.push(['_trackPageview', '/facebookFanPage/<?php echo html_entity_decode(get_the_title($activePost)); ?>/']);
-				 jQuery(document).ready(function(){jQuery('#container').fadeIn(); /*.css({'display': 'block'});*/});
+				 jQuery(document).ready(function(){jQuery('#container').fadeIn(); });
 				//console.debug('2');
 			  } else {
 				// Probably want to cap the total number of times you call this.
 				setTimeout('checkIfAnalyticsLoaded()', 500);
 				//console.debug('3');
 			  }
-		    };
+		    };*/
 			
 			
 			

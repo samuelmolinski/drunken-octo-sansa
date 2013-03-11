@@ -1,5 +1,5 @@
 <?php
-$cookieInfo = new GA_Parse($_COOKIE);
+    $cookieInfo = new GA_Parse($_COOKIE);
 ?>
 <div class="rodape">
     <div class="video">

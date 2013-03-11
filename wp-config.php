@@ -20,9 +20,11 @@ define('DB_NAME', 'vfgv2013clone');
 
 /** Usuário do banco de dados MySQL */
 //define('DB_USER', 'root');
+define('DB_USER', 'admin');
 
 /** Senha do banco de dados MySQL */
 //define('DB_PASSWORD', '123!!@qwe');
+define('DB_PASSWORD', '1234');
 
 /** Usuário do banco de dados MySQL */
 define('DB_USER', 'Admin');
@@ -41,6 +43,7 @@ define('DB_COLLATE', '');
 
 //define('FORCE_SSL_LOGIN', true);
 //define('FORCE_SSL_ADMIN', true);
+
 /**#@+
  * Chaves únicas de autenticação e salts.
  *
