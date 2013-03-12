@@ -6,7 +6,6 @@ include_once "fbmain.php";
 //inspect(__FILE__);    
 //inspect($activePost);
 ?>
-<?php get_header(); ?>
 	<div id="content" class="homeHeight">
     	<div>
         	<a href="<?php echo $loginUrl; ?>" style="display: block; width: 100%; height: 80px; position: absolute; " target="_top"></a>
@@ -29,6 +28,3 @@ include_once "fbmain.php";
                 <?php }} ?>
         	</ul>
         </div>
-		<?php get_template_part('rodape-2013'); ?>
-    </div>
-<?php get_footer();  ?>

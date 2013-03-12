@@ -33,6 +33,7 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 		
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
+		<script type="text/javascript">if(!window.log) {window.log = function() {log.history = log.history || [];log.history.push(arguments);if(this.console) {console.log(Array.prototype.slice.call(arguments));}};}</script>
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.colorbox.js"></script>
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/js/flexcroll.js"></script>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/styles/colorbox.css">        
@@ -44,41 +45,21 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 		   
 		window.fbAsyncInit = function() {
 		
-		FB.init({
-		 appId  : '<?php echo FB_ID ?>',
-		 status : true, // check login status
-		 cookie : true, // enable cookies to allow the server to access the session
-		 xfbml  : true// parse XFBML
-		 });
-		 	
-			//TIME OUT DO CANVAS
-			jQuery(function(){		
+			FB.init({
+			 appId  : '<?php echo FB_ID ?>',
+			 status : true, // check login status
+			 cookie : true, // enable cookies to allow the server to access the session
+			 xfbml  : true// parse XFBML
+			 });
+			 
+
+        };	
+
+		function pegar(altura){
+			log("altura:" + altura);
+			FB.Canvas.setSize({ width: 810, height: altura });
+		}
 			
-				function pegar(altura){
-					//console.debug("altura:" + altura);
-					FB.Canvas.setSize({ width: 810, height: altura });
-				}
-				
-				<?
-				if(is_single()){
-				?>
-					setInterval(function(){
-						pegar(1100);
-					}, 1000);
-				<?
-				}else{
-				?>
-					var altura = jQuery("#altura").height();
-					altura = (altura + 180);
-					setInterval(function(){
-						pegar(altura);
-					}, 1000);
-				<?	
-				}
-				?>
-			});
-			
-        };
         function newInvite(){
 			jQuery("#videoDesafio").hide();
              var receiverUserIds = FB.ui({ 
@@ -124,9 +105,25 @@ header('P3P: CP="IE is often a NIGHTMARE"');
                 error: function(msg){
                      //console.debug('updateStatus failed')
                 }
-            });
-            
+            });            
         }
+
+		//TIME OUT DO CANVAS
+		jQuery(function(){				
+			
+			<?php if(is_single()){ ?>
+				setInterval(function(){
+					pegar(1100);
+				}, 1000);
+			<?php }else{ ?>
+				
+				setInterval(function(){
+					var altura = jQuery("#altura").height();
+					altura = (altura + 180);
+					pegar(altura);
+				}, 1000);
+			<?php } ?>
+		});
 		</script> 
 		
 		<meta property="fb:admins" content="100000220196116,1049257200,679573088"/>
@@ -187,12 +184,13 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 				setTimeout('checkIfAnalyticsLoaded()', 500);
 				//console.debug('3');
 			  }
-		    };*/
+		    };
+						
+			checkIfAnalyticsLoaded();*/
 			
-			
-			
-			checkIfAnalyticsLoaded();
-				    
+			//remove this on live
+			jQuery(document).ready(function(){jQuery('#container').fadeIn(); });
+
 		(function() {
 		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -244,4 +242,4 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 	     </div>
 		<div id="fb-root"></div>
 		<div id="container">
-        <div id="altura">
+        <div id="altura" class='clearfix'>
