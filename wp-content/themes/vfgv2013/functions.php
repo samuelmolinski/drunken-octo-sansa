@@ -167,7 +167,7 @@ function bones_comments($comment, $args, $depth) {
 		if (!file_exists(WP_CONTENT_DIR . $path[1] .'/'. $bw_image_filename)) {
 			// Create greyscale image
 			$bw_image = wp_load_image(WP_CONTENT_DIR . $path[1] .'/'. $image_src_filename);
-//			inspect($bw_image);
+			inspect($bw_image);
 
 			// Apply greyscale filter
 			imagefilter($bw_image, IMG_FILTER_GRAYSCALE);
