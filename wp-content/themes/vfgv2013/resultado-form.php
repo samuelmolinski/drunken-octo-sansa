@@ -1,4 +1,4 @@
-<div id="content" class="SingleDesafio">
+<div id="content" class="SingleDesafio clearfix">
   <div id="inner-content" class="wrap clearfix">
     <div id="main" class="eightcol clearfix" role="main">
       <h1>Desafio -

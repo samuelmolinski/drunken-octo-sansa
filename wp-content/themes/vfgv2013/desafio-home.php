@@ -1,7 +1,7 @@
-<div id="content">
+<div id="content" class='clearfix'>
     <?php get_template_part('topo-2013'); ?>
-    <div class="videos-single">
-    	<div class="premio-single">
+    <div class="videos-single clearfix">
+    	<div class="premio-single ">
         	<img src="<?php echo $meta['fb_post_image_premio']; ?>" alt="" />
         </div>
     	<div class="video-youtube">
@@ -10,7 +10,7 @@
 " frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
-    <div class="resposta-single">
+    <div class="resposta-single clearfix">
 		<?php 						
 		if ('active' == $status) {		
 			if (!$alreadyCommented){

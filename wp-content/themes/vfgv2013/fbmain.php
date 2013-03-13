@@ -64,6 +64,7 @@
 	// Include all wp based scripts inside the "if" statement.
 	global $wpdb;
 	if (NULL !== $wpdb) {
+
 		require_once (TEMPLATEPATH . "/class.gaparse.php");
 
 		//Init Variables
@@ -83,9 +84,9 @@
 		$s = array();
 
 		if ($logged) {
-			$inspect = TRUE;
+			//$inspect = TRUE;
 		} else {
-			$inspect = FALSE;
+			//$inspect = FALSE;
 		};
 
 		//inspect(currentID());
