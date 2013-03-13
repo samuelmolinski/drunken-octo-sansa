@@ -74,4 +74,3 @@ if ($fb_user) {
 
 
 exit ;
-?>
