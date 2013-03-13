@@ -209,7 +209,7 @@ header('P3P: CP="IE is often a NIGHTMARE"');
         <script language="javascript" type="text/javascript">
     jQuery(window).load(function() {
         //$('#slider').nivoSlider();
-		jQuery("#carousel").carousel({ dispItems: 8, animSpeed: "slow", loop: true });		
+		jQuery("#carousel").carousel({ dispItems: 5, animSpeed: "slow", loop: true });		
 		jQuery("#carousel").delay(1500);	
 		jQuery("#carousel").css('margin-left', 'auto')
 		
