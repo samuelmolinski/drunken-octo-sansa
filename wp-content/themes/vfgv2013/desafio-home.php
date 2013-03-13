@@ -6,8 +6,7 @@
         </div>
     	<div class="video-youtube">
         	<?php $url = $meta['linkVideo']; ?>
-        	<iframe width="492" height="273" src="https://www.youtube.com/embed/<?php echo cleanVideoURL($url); ?>?rel=0&amp;wmode=transparent
-" frameborder="0" allowfullscreen></iframe>
+        	<iframe width="492" height="273" src="https://www.youtube.com/embed/<?php echo cleanVideoURL($url); ?>?rel=0&amp;wmode=transparent" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
     <div class="resposta-single clearfix">
@@ -19,12 +18,12 @@
 			<div class="comentarios">
             <div class="flexcroll">
 				<?php 
-				// print users comment first
-				if ($allOtherComments != NULL) {
-					printComments($allOtherComments);
-				}else{
-					echo '<p>Ninguém respondeu ao desafio ainda. Seja o primeiro!</p>';
-				}
+					// print users comment first
+					if ($allOtherComments != NULL) {
+						printComments($allOtherComments);
+					}else{
+						echo '<p>Ninguém respondeu ao desafio ainda. Seja o primeiro!</p>';
+					}
 				?>
 			</div>
             </div>				
