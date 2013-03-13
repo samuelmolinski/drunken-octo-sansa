@@ -29,7 +29,7 @@
    
    	<!--<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://goo.gl/FvXES" data-text="Encare os desafios que a FGV preparou pra você." data-lang="pt">Tweetar</a>   -->
        
-       <div class="twitter-share-button" style="margin-right:5px; float:right"><a href="javascript:;" onClick="abre('https://twitter.com/intent/tweet?original_referer=https://twitter.com/intent/tweet?original_referer=https://www.vestibularfgv.com.br/2013CLONE/&ref=ts&source=tweetbutton&text=Encare os desafios que a FGV preparou pra você.&url=http://goo.gl/FvXES');_gaq.push(['_trackEvent', 'compartilhamento', 'twittter', 'linkHeader']);"><img src="<?php bloginfo("template_directory"); ?>/assets/image/compartilharTwitter.png" width="66" height="20" /></a></div>
+       <div class="twitter-share-button" style="margin-right:9px; float:right"><a href="javascript:;" onClick="abre('https://twitter.com/intent/tweet?original_referer=https://twitter.com/intent/tweet?original_referer=https://www.vestibularfgv.com.br/2013CLONE/&ref=ts&source=tweetbutton&text=Encare os desafios que a FGV preparou pra você.&url=http://goo.gl/FvXES');_gaq.push(['_trackEvent', 'compartilhamento', 'twittter', 'linkHeader']);"><img src="<?php bloginfo("template_directory"); ?>/assets/image/compartilharTwitter.png" width="66" height="20" /></a></div>
                                                                    
        
       
