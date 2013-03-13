@@ -189,7 +189,7 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 			checkIfAnalyticsLoaded();
 			
 			//remove this on live
-			jQuery(document).ready(function(){jQuery('#container').fadeIn(); });
+			//jQuery(document).ready(function(){jQuery('#container').fadeIn(); });
 
 		(function() {
 		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
