@@ -18,7 +18,7 @@
     <input type="hidden" name="post_ID" id="callbacklink" value="<?php echo $loginUrl; ?>" />
     <input type="hidden" name="url_post_final" id="url_post_final" value="https://www.facebook.com/vestibularfgv?sk=app_440982045925181" />
     <div class="fb_commentWrapper">
-        <div class=""><?php echo $meta['inputFrase']; ?></div>
+        <div class="inputFrase"><?php echo $meta['inputFrase']; ?></div>
       <textarea id="fb_comment" name="fb_comment" rows="4" cols="20"><?php echo $meta['inputFrase']; ?></textarea>
     </div>
     <input id="fb_submit" type="button" value=" " name="fb_submit" style="display: none;" />  
