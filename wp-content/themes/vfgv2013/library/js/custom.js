@@ -18,6 +18,7 @@ function formActions() {
 		jQuery('textarea#fb_comment').css('box-shadow', 'none')
 	});
 	var comment = jQuery('textarea#fb_comment');
+	var commentSelect = jQuery('textarea#fb_comment, .inputFrase');
 
 	var title = jQuery('#labelTitle').val();
 	//console.debug(jQuery('#endDate'));
@@ -27,13 +28,14 @@ function formActions() {
 	comment.val(commentLabel);
 	comment.css('color', '#B7B7B7');
 
-	comment.focus(function() {
+	commentSelect.focus(function() {
 		if((comment.val() == '') || (comment.val() == commentLabel)) {
 			comment.val('');
 			comment.css('color', '#565656');
 			jQuery('#main #frame #commentsDesafio #fb_comment').removeClass('tt');
 			jQuery('#fb_submit').fadeIn();
-			jQuery('.publicar-fb').fadeIn();			
+			jQuery('.publicar-fb').fadeIn();
+			jQuery('.inputFrase').fadeOut();			
 		}
 	}).blur(function() {
 		if(comment.val() == '') {
@@ -41,7 +43,8 @@ function formActions() {
 			comment.css('color', '#B7B7B7');
 			jQuery('#main #frame #commentsDesafio #fb_comment').addClass('tt');
 			jQuery('#fb_submit').fadeOut();
-			jQuery('.publicar-fb').fadeOut();			
+			jQuery('.publicar-fb').fadeOut();	
+			jQuery('.inputFrase').fadeIn();			
 		}
 	});
 }

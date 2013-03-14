@@ -116,7 +116,7 @@ div.videos-single div.video-youtube { width: 500px; height: 273px; margin: 10px 
 div.resposta-single { width: 810px; height: 190px; position: relative; z-index: 5; /*background: url(../../assets/image/bg-resposta.png) no-repeat center center transparent;*/ margin-top: -5px;  }
 div.resposta-single > img {margin-left: 39px; margin-bottom: 25px;}
 div.resposta-single div#commentsDesafio { width: 730px; margin: 0 auto; clear: both; height: 190px !important; }
-div.fb_commentWrapper textarea#fb_comment { background: #e4e4e4; border: none; padding: 20px 10px 48px; color: #2f465c !important;  font: 13px 'UniversLTStd55Regular', sans-serif !important; width: 710px; height: 85px !important; max-height: 85px; margin-bottom: -30px; resize: none !important;}
+div.fb_commentWrapper textarea#fb_comment { background: #e4e4e4; text-indent: -999px; border: none; padding: 20px 0 35px 20px; color: #2f465c !important;  font: 13px 'UniversLTStd55Regular', sans-serif !important; width: 710px; height: 85px !important; max-height: 85px; margin-bottom: -30px; resize: none !important;}
 div.fb_commentWrapper textarea#fb_comment:focus {outline: none};
 div.resposta-single input#fb_submit { width: 115px; height: 38px; border: none !important; background:url(../../assets/image/responder.png) no-repeat center top; float: right; margin-right: 15px; position: relative; z-index: 10; border: none;}
 div.resposta-single input#fb_submit:focus { outline: none !important; background-position: bottom;}
@@ -132,7 +132,15 @@ div.comentarios div.fb_comment div.commentBody h4 { margin: 0 !important; paddin
 
 div#respostassss p { width: 480px; float: right; color: #FFF; margin: 50px 50px 0 0; font: 2em 'UniversLTStd59UltraCnRegular', sans-serif;}
 
-.inputFrase{position: relative; color: #2f465c; z-index: 6;}
+.inputFrase{
+	position: absolute;
+	color: #2f465c;
+	z-index: 6;
+	font: 13px 'UniversLTStd55Regular',sans-serif!important;
+	top: 20px;
+	left: 65px;
+	width: 700px;
+}
 
     /* Configura��o do Scroll */
     .scrollgeneric { line-height: 1px; font-size: 1px; position: absolute; top: 0; left: 0; cursor: pointer; }
