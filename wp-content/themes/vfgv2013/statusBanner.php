@@ -1,7 +1,7 @@
 <div id="carousel">
 <ul>
 <?php
-	global $page_desafio_mb, $activePost, $activeImgURL;
+	global $page_desafio_mb, $activePost, $activeImgURL, $loginUrl;
     $arg = array (
         'post_type' => 'desafio_2013', 
 		'order' => 'ASC'
@@ -47,7 +47,7 @@
 	<li class="carouselItem">
 
         <div class="company" <?php echo $title ?> >
-            <?php if ($addLink) { ?><a href="<?php the_permalink(); ?>" ><?php } ?>
+            <?php if ($addLink) { ?><a href="<?php if(!$fb_user) { echo $loginUrl; } else {the_permalink(); } ?>" ><?php } ?>
             <?php echo $img; ?>
             <span class="status <?php echo $meta['status'] ?>"><?php echo $status ?></span>		
             <?php if ($addLink) { ?></a><?php } ?>		
