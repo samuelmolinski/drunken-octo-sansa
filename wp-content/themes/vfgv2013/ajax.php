@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ALL);
 define('FB_BASEURL', 'https://www.vestibularfgv.com.br/2013CLONE/');
 
 define('FB_ID', '440982045925181');
@@ -7,10 +7,27 @@ define('FB_SECRET', 'b8716067e7df5173183aa5865b021657');
 //define('FB_APP_URL', 'https://www.facebook.com/vestibularfgv?sk=app_127828760677303');
 define('FB_APP_URL', 'https://www.facebook.com/pages/Vestibular-FGV/141618765913092?sk=app_440982045925181');
 
-include_once "fbmain.php";
 include_once "inspect.php";
+//include_once "fbmain.php";
+
+$fb_user = null;
+//facebook user uid
+try {
+     include_once "fb/facebook.php";
+} catch(Exception $o) {
+     echo '<pre>';
+     print_r($o);
+     echo '</pre>';
+}
+
+// Create our Application instance.
+$facebook = new Facebook(array('appId' => FB_ID, 'secret' => FB_SECRET, 'cookie' => true, ));
+
+//Facebook Authentication part
+$fb_user = $facebook -> getUser();
 
 $message = $picture = $link = $name = $caption = $description = $source = $place = $tags = $app_data = '';
+
 if ($fb_user) {
      //update user's status using graph api
      if (isset($_REQUEST['message'])) {
@@ -58,7 +75,7 @@ if ($fb_user) {
                $message = "\n" . $fbURL;
                $statusUpdate = $facebook -> api('/me/feed', 'post', array('message' => $message, 'picture' => $picture, 'link' => $link, 'name' => $name, 'caption' => $caption, 'description' => $description, 'source' => $source, 'place' => $place, 'tags' => $tags));
           } catch (FacebookApiException $e) {
-               //d($e);
+               d($e);
                echo $_REQUEST['message'];
           }
           echo "Status Update Successfull. " . $_REQUEST['message'];
@@ -67,10 +84,10 @@ if ($fb_user) {
      }
 }
 
-inspect($_REQUEST);
-inspect($fb_user);
-inspect($message);
-inspect($statusUpdate);
+//inspect($_REQUEST);
+//inspect($fb_user);
+//inspect($message);
+//inspect($statusUpdate);
 
 
 exit ;

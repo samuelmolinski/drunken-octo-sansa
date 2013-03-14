@@ -56,7 +56,7 @@ header('P3P: CP="IE is often a NIGHTMARE"');
         };	
 
 		function pegar(altura){
-			log("altura:" + altura);
+			//log("altura:" + altura);
 			FB.Canvas.setSize({ width: 810, height: altura });
 		}
 			
@@ -112,6 +112,7 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 		jQuery(function(){				
 			
 			<?php if(is_single()){ ?>
+				log('setting height');
 				setInterval(function(){
 					pegar(1100);
 				}, 1000);

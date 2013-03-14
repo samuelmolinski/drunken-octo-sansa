@@ -140,7 +140,7 @@ function submitComment() {
 	var ready = false;
 	 
 	jQuery('#msg').val(jQuery('textarea#fb_comment').val());
-	jQuery('textarea#fb_comment').css('opacity', '.3');
+	jQuery('textarea#fb_comment').css('opacity', '.85');
 	jQuery('textarea#fb_comment').val('Enviando sua resposta...');
 
 	if(jQuery("#fb_status").is(":checked")) {
@@ -173,8 +173,9 @@ function submitComment() {
 				if(ready) {
 					jQuery('body').fadeOut();
 					console.debug('Successful Processing: Reloading page ->'+ addParam(window.location.href, 'callbacklink=1'));
+					//console.debug('Successful Processing: Reloading page -> reload');
 					window.location.replace(addParam(window.location.href, 'callbacklink=1'));
-					location.reload();
+					//location.reload();
 				} else {
 					ready = true;
 					//console.debug('Successful Processing Share: '+ ready);
@@ -221,6 +222,7 @@ function submitComment() {
 				if(ready) {
 					jQuery('body').fadeOut();
 					console.debug('Successful Processing: Reloading page ->'+ addParam(window.location.href, 'callbacklink=1'));
+					//console.debug('Successful Processing: Reloading page -> reload');
 					//window.location.replace(jQuery('#callbacklink').val());
 					window.location.replace(addParam(window.location.href, 'callbacklink=1'));
 					//location.reload();

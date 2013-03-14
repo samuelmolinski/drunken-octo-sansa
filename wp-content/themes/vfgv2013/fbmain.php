@@ -21,6 +21,19 @@
 		echo '</pre>';
 	}
 
+
+	function curPageURL() {
+		$pageURL = 'http';
+		if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+			$pageURL .= "://";
+		if ($_SERVER["SERVER_PORT"] != "80") {
+			$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+		} else {
+			$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		}
+		return $pageURL;
+	}
+
 	// Using $wpdb to see if the script is executing inside of wordpress, if not we
 	// skip this part
 	// Include all wp based scripts inside the "if" statement.
@@ -63,15 +76,6 @@
 
 		//Facebook Authentication part
 		$fb_user = $facebook -> getUser();
-		// We may or may not have this data based
-		// on whether the user is logged in.
-		// If we have a $user id here, it means we know
-		// the user is logged into
-		// Facebook, but we donï¿½t know if the access token is valid. An access
-		// token is invalid if the user logged out of Facebook.
-
-		//inspect($fb_user);
-		//inspect($userData);
 
 		$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => $fbconfig['appBaseUrl']));
 		
@@ -84,8 +88,10 @@
 			} catch (FacebookApiException $e) {
 				//you should use error_log($e); instead of printing the info on browser
 				//inspect($e);  // d is a debug function defined at the end of this file
-				$fb_user = null;
 				header("Location:".curPageURL());
+				//$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => curPageURL()));
+		
+				//header("Location: $loginUrl");
 			}
 		} else {
 			if(!$logged&&(isset($_GET['callbacklink']))) {
@@ -98,18 +104,6 @@
 		} else {
 			//$inspect = FALSE;
 		};
-
-		function curPageURL() {
-			$pageURL = 'http';
-			if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
-				$pageURL .= "://";
-			if ($_SERVER["SERVER_PORT"] != "80") {
-				$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-			} else {
-				$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-			}
-			return $pageURL;
-		}
 
 		//inspect(currentID());
 
@@ -202,11 +196,10 @@
 		$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => $fbURL));
 
 		if (!$fb_user and !$logged) {
-
 			//$log[] = array('$fb_user',$fb_user);
 			//$log[] = array('$logged',$logged);
 			//$log[] = array('fanpage', 'true');
-			require ('fanpage.php');
+			require ('page-fanpage.php');
 			/*echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";*/
 			//exit ;
 		}

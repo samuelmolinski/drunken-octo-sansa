@@ -117,11 +117,13 @@ div.resposta-single { width: 810px; height: 190px; position: relative; z-index: 
 div.resposta-single > img {margin-left: 39px; margin-bottom: 25px;}
 div.resposta-single div#commentsDesafio { width: 730px; margin: 0 auto; clear: both; height: 190px !important; }
 div.fb_commentWrapper textarea#fb_comment { background: #e4e4e4; border: none; padding: 20px 10px 48px; color: #2f465c !important;  font: 13px 'UniversLTStd55Regular', sans-serif !important; width: 710px; height: 85px !important; max-height: 85px; margin-bottom: -30px; resize: none !important;}
-div.resposta-single input#fb_submit { width: 115px; height: 38px; border: none !important; background:url(../../assets/image/responder.gif) no-repeat center center; float: right; margin-right: 15px; position: relative; z-index: 10; border: none;}
-div.resposta-single input#fb_submit:focus { outline: none !important;}
+div.fb_commentWrapper textarea#fb_comment:focus {outline: none};
+div.resposta-single input#fb_submit { width: 115px; height: 38px; border: none !important; background:url(../../assets/image/responder.png) no-repeat center top; float: right; margin-right: 15px; position: relative; z-index: 10; border: none;}
+div.resposta-single input#fb_submit:focus { outline: none !important; background-position: bottom;}
+div.resposta-single input#fb_submit:hover { background-position: bottom;}
 div.publicar-fb { margin-left: 10px; font: 1em 'UniversLTStd59UltraCnRegular', sans-serif; text-transform: uppercase; margin-top: 2px;}
 
-div.comentarios { width: 705px; margin: 0 auto; background-image: url(../../assets/image/bg-comments.png); overflow-x: hidden; overflow-y: hidden; height: 265px; padding: 20px; -webkit-box-shadow:  1px 0px 5px 0px rgba(0,0,0, .7); box-shadow:  1px 0px 5px 0px  rgba(0,0,0, .7);}
+div.comentarios { width: 705px; margin: 0 auto;background-color: rgba(255,255,255, 0.8); background-image: url(../../assets/image/bg-comments.png); overflow-x: hidden; overflow-y: hidden; height: 265px; padding: 20px; -webkit-box-shadow:  1px 0px 5px 0px rgba(0,0,0, .7); box-shadow:  1px 0px 5px 0px  rgba(0,0,0, .7);}
 .flexcroll { height: 265px !important; }
 div.comentarios div.fb_comment { border-bottom: 1px solid #999; margin-bottom: 10px; padding: 0 10px 0 0; width: 99% !important; }
 div.comentarios div.fb_comment div.photos { float: left; /*width: 80px;*/ padding-right: 10px;  }
@@ -185,8 +187,11 @@ div#respostassss p { width: 480px; float: right; color: #FFF; margin: 50px 50px 
 .carousel-next {
     background:url("../../assets/image/menu_empresas_seta.jpg") no-repeat;
     height: 36px;
-    margin-top: 23px;
+    margin-top: 30px;
     width: 12px;
+    position: absolute;
+	right: 0;
+	float: none;
 }
 
 .carousel-wrap {
