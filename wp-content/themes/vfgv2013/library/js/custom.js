@@ -172,8 +172,9 @@ function submitComment() {
 				//console.debug('ajax checking ready: '+ ready);
 				if(ready) {
 					jQuery('body').fadeOut();
-					//console.debug('Successful Processing: Reloading page');
-					window.location.replace(window.location.href);
+					console.debug('Successful Processing: Reloading page ->'+ addParam(window.location.href, 'callbacklink=1'));
+					window.location.replace(addParam(window.location.href, 'callbacklink=1'));
+					location.reload();
 				} else {
 					ready = true;
 					//console.debug('Successful Processing Share: '+ ready);
@@ -219,8 +220,10 @@ function submitComment() {
 				//console.debug('submit checking ready: '+ ready);
 				if(ready) {
 					jQuery('body').fadeOut();
-					//console.debug('Successful Processing: Reloading page');
-					window.location.replace(window.location.href);
+					console.debug('Successful Processing: Reloading page ->'+ addParam(window.location.href, 'callbacklink=1'));
+					//window.location.replace(jQuery('#callbacklink').val());
+					window.location.replace(addParam(window.location.href, 'callbacklink=1'));
+					//location.reload();
 				} else {
 					ready = true;
 					//console.debug('Successful Processing submit: '+ ready);
@@ -252,4 +255,13 @@ function totalComments() {
 		jQuery('#totalComment').fadeIn(1000);
 	}
 	
+}
+
+function addParam(link, param){
+	if(link.indexOf("?") == -1) {
+		link = link + '?' + param;
+	} else {
+		link = link + '&' + param;
+	}
+	return link;
 }
