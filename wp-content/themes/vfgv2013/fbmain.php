@@ -43,7 +43,7 @@
 		require_once (TEMPLATEPATH . "/class.gaparse.php");
 
 		//Init Variables
-		global $inspect, $activePost, $page_desafio_mb, $wp_query, $log, $cookieInfo, $totalComments;
+		global $inspect, $activePost, $page_desafio_mb, $wp_query, $log, $cookieInfo, $totalComments, $loginUrl;
 		$server = $_SERVER['SERVER_NAME'];
 		$cookieInfo = new GA_Parse($_COOKIE);
 		//inspect($cookieInfo);
