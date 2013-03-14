@@ -14,44 +14,6 @@
 	}
 	require_once ('fb/Class-User.php');
 
-	$fb_user = null;
-	//facebook user uid
-	try {
-		include_once "fb/facebook.php";
-	} catch(Exception $o) {
-		echo '<pre>';
-		print_r($o);
-		echo '</pre>';
-	}
-
-	// Create our Application instance.
-	$facebook = new Facebook( array('appId' => $fbconfig['appid'], 'secret' => $fbconfig['secret'], 'cookie' => true, ));
-
-	$userData = NULL;
-
-	//Facebook Authentication part
-	$fb_user = $facebook -> getUser();
-	// We may or may not have this data based
-	// on whether the user is logged in.
-	// If we have a $user id here, it means we know
-	// the user is logged into
-	// Facebook, but we donï¿½t know if the access token is valid. An access
-	// token is invalid if the user logged out of Facebook.
-
-	$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => $fbconfig['appBaseUrl']));
-	
-	if ($fb_user) {
-		try {
-			// Proceed knowing you have a logged in user who's authenticated.
-			$userData = $facebook -> api('/me');
-			//inspect($userData);
-
-		} catch (FacebookApiException $e) {
-			//you should use error_log($e); instead of printing the info on browser
-			//inspect($e);  // d is a debug function defined at the end of this file
-			$fb_user = null;
-		}
-	}
 
 	function d($d) {
 		echo '<pre>';
@@ -83,11 +45,71 @@
 		$closed = array();
 		$s = array();
 
+		global $fb_user;
+		$fb_user = null;
+		//facebook user uid
+		try {
+			include_once "fb/facebook.php";
+		} catch(Exception $o) {
+			echo '<pre>';
+			print_r($o);
+			echo '</pre>';
+		}
+
+		// Create our Application instance.
+		$facebook = new Facebook(array('appId' => $fbconfig['appid'], 'secret' => $fbconfig['secret'], 'cookie' => true, ));
+
+		$userData = NULL;
+
+		//Facebook Authentication part
+		$fb_user = $facebook -> getUser();
+		// We may or may not have this data based
+		// on whether the user is logged in.
+		// If we have a $user id here, it means we know
+		// the user is logged into
+		// Facebook, but we donï¿½t know if the access token is valid. An access
+		// token is invalid if the user logged out of Facebook.
+
+		//inspect($fb_user);
+		//inspect($userData);
+
+		$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => $fbconfig['appBaseUrl']));
+		
+		if ($fb_user) {
+			try {
+				// Proceed knowing you have a logged in user who's authenticated.
+				$userData = $facebook -> api('/me');
+				//inspect($userData);
+
+			} catch (FacebookApiException $e) {
+				//you should use error_log($e); instead of printing the info on browser
+				//inspect($e);  // d is a debug function defined at the end of this file
+				$fb_user = null;
+				header("Location:".curPageURL());
+			}
+		} else {
+			if(!$logged&&(isset($_GET['callbacklink']))) {
+				header("Location: $loginUrl");
+			}
+		}
+
 		if ($logged) {
 			//$inspect = TRUE;
 		} else {
 			//$inspect = FALSE;
 		};
+
+		function curPageURL() {
+			$pageURL = 'http';
+			if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+				$pageURL .= "://";
+			if ($_SERVER["SERVER_PORT"] != "80") {
+				$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+			} else {
+				$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+			}
+			return $pageURL;
+		}
 
 		//inspect(currentID());
 

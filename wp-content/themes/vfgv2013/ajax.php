@@ -58,7 +58,7 @@ if ($fb_user) {
                $message = "\n" . $fbURL;
                $statusUpdate = $facebook -> api('/me/feed', 'post', array('message' => $message, 'picture' => $picture, 'link' => $link, 'name' => $name, 'caption' => $caption, 'description' => $description, 'source' => $source, 'place' => $place, 'tags' => $tags));
           } catch (FacebookApiException $e) {
-               d($e);
+               //d($e);
                echo $_REQUEST['message'];
           }
           echo "Status Update Successfull. " . $_REQUEST['message'];
@@ -67,10 +67,10 @@ if ($fb_user) {
      }
 }
 
-//inspect($_REQUEST);
-//inspect($fb_user);
-//inspect($message);
-//inspect($statusUpdate);
+inspect($_REQUEST);
+inspect($fb_user);
+inspect($message);
+inspect($statusUpdate);
 
 
 exit ;
