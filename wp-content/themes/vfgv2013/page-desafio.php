@@ -27,7 +27,7 @@ include_once "fbmain.php";
         	</ul>
         </div>
 	<?php } else { 
-			include('fanpage'); 
+			include('fanpage.php'); 
 		} 
 		get_template_part('rodape-2013');
 	?>
