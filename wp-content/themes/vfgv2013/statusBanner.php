@@ -14,7 +14,7 @@
 			
 			$imgsrc = get_post_image_scr();
 			if ($activePost == $post->id) {$activeImgURL = $imgsrc;}
-			$img = get_crop_image($imgsrc, '&amp;w=164&amp;h=69&amp;zc=1');
+			$img = get_crop_image($imgsrc, '&amp;w=94&amp;h=63&amp;zc=1');
 
 			$page_desafio_mb->the_meta();
 			$meta = $page_desafio_mb->meta;
@@ -31,10 +31,10 @@
 			}
 			
 			if ($meta['status']== 'active') {
-				$img = get_crop_image($imgsrc, '&amp;w=145&amp;h=60&amp;zc=1', '', get_the_title());
+				$img = get_crop_image($imgsrc, '&amp;w=85&amp;h=60&amp;zc=1', '', get_the_title());
 			} else {
 				$imgsrc = desaturateImg($imgsrc);
-				$img = get_crop_image($imgsrc, '&amp;w=145&amp;h=60&amp;zc=1', 'c', get_the_title());
+				$img = get_crop_image($imgsrc, '&amp;w=85&amp;h=60&amp;zc=1', 'c', get_the_title());
 			}
                
                if ('locked' == $meta['status']){
