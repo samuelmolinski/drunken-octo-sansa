@@ -195,14 +195,14 @@
 		
 		$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => $fbURL));
 
-		if (!$fb_user and !$logged) {
+		/*if (!$fb_user and !$logged) {
 			//$log[] = array('$fb_user',$fb_user);
 			//$log[] = array('$logged',$logged);
 			//$log[] = array('fanpage', 'true');
 			require ('page-fanpage.php');
-			/*echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";*/
+			//echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
 			//exit ;
-		}
+		}*/
 
 		// prevents localhost CURL fatal error for facebook while using SSL
 		//inspect($activePost);
