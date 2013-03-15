@@ -19,6 +19,11 @@ try {
      print_r($o);
      echo '</pre>';
 }
+function l($o) {
+     echo '<pre>';
+     print_r($o);
+     echo '</pre>';
+}
 
 // Create our Application instance.
 $facebook = new Facebook(array('appId' => FB_ID, 'secret' => FB_SECRET, 'cookie' => true, ));
@@ -72,8 +77,9 @@ if ($fb_user) {
                     }
                }               
 
-               $message = "\n" . $fbURL;
+               $message = "Vestibular FGV 2013-2 / $caption<br/>\n$message<br/>\n" . FB_APP_URL;
                $statusUpdate = $facebook -> api('/me/feed', 'post', array('message' => $message, 'picture' => $picture, 'link' => $link, 'name' => $name, 'caption' => $caption, 'description' => $description, 'source' => $source, 'place' => $place, 'tags' => $tags));
+               //$statusUpdate = $facebook -> api('/me/photos', 'post', array('message' => $message, 'source' => $picture));
           } catch (FacebookApiException $e) {
                d($e);
                echo $_REQUEST['message'];
@@ -84,10 +90,10 @@ if ($fb_user) {
      }
 }
 
-//inspect($_REQUEST);
-//inspect($fb_user);
-//inspect($message);
-//inspect($statusUpdate);
+/*l($_REQUEST);
+l($fb_user);
+l($message);
+l($statusUpdate);*/
 
 
 exit ;
