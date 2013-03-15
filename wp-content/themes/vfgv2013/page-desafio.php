@@ -20,7 +20,7 @@ include_once "fbmain.php";
 					$page_desafio_mb->the_meta(); 
 					$meta = $page_desafio_mb->meta; 
 				?>
-                	<?php if($meta['status'] == 'active'){?>
+                	<?php if($meta['status'] == 'active'){ ?>
         				<li><a href="<?php the_permalink(''); ?>"><img src="<?php echo $meta['fb_post_image_home']; ?>" alt="<?php the_title(''); ?>" /> </a></li>
                     <?php } ?>
                 <?php }} ?>

@@ -47,7 +47,10 @@
 	<li class="carouselItem">
 
         <div class="company" <?php echo $title ?> >
-            <?php if ($addLink) { ?><a href="<?php if(!$fb_user) { echo $loginUrl; } else {the_permalink(); } ?>" ><?php } ?>
+            <?php if ($addLink) { 
+            	/*?><a href="<?php if(!$fb_user) { echo $loginUrl.'" target="_top"'; } else {the_permalink(); } ?>" ><?php*/ 
+            	?><a href="<?php the_permalink(''); ?>" ><?php 
+            } ?>
             <?php echo $img; ?>
             <span class="status <?php echo $meta['status'] ?>"><?php echo $status ?></span>		
             <?php if ($addLink) { ?></a><?php } ?>		
