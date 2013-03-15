@@ -25,12 +25,12 @@ function formActions() {
 	//console.debug('endDate');
 	var commentLabel = jQuery('#labelTitle').val();
 
-	comment.val(commentLabel);
+	//comment.val(commentLabel);
 	comment.css('color', '#B7B7B7');
 
 	commentSelect.focus(function() {
 		if((comment.val() == '') || (comment.val() == commentLabel)) {
-			comment.val('');
+			//comment.val('');
 			comment.css('color', '#565656');
 			jQuery('#main #frame #commentsDesafio #fb_comment').removeClass('tt');
 			jQuery('#fb_submit').fadeIn();
@@ -39,7 +39,7 @@ function formActions() {
 		}
 	}).blur(function() {
 		if(comment.val() == '') {
-			comment.val(commentLabel);
+			//comment.val(commentLabel);
 			comment.css('color', '#B7B7B7');
 			jQuery('#main #frame #commentsDesafio #fb_comment').addClass('tt');
 			jQuery('#fb_submit').fadeOut();
@@ -153,6 +153,32 @@ function submitComment() {
 		var l = window.location.protocol + '//' + window.location.host + '/' + arr[1] + '/'
 
 		//updateStatus(jQuery('#msg').val(), jQuery('#pic').val(), jQuery('#l').val(), jQuery('#n').val(), jQuery('#cap').val(), jQuery('#des').val(), '', '', '');
+
+		//FB.login(function(response) {
+		//	if (response.authResponse) {
+				/*var access_token =   FB.getAuthResponse()['accessToken'];
+				console.log('Access Token = '+ access_token);
+
+				FB.api('me/photos', 'post', {
+					message: 'has shared Picture',
+					status: 'success',
+					access_token: access_token,
+					url: jQuery('#pic').val() 
+				}, function (response) {
+
+					if (!response || response.error) {
+						log('Error occured:', response);
+					} else {
+						log('Post ID: ', response.id);
+					}
+
+				});*/
+		//	} else {
+		//		log('User cancelled login or did not fully authorize.');
+		//	}
+		//}, {scope: 'user_photos,photo_upload,publish_stream,offline_access'});
+
+
 
 		//console.debug(l + "wp-content/themes/vfgv2013/ajax.php");
 		jQuery.ajax({

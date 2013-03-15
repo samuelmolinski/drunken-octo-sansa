@@ -49,7 +49,8 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 			 appId  : '<?php echo FB_ID ?>',
 			 status : true, // check login status
 			 cookie : true, // enable cookies to allow the server to access the session
-			 xfbml  : true// parse XFBML
+			 xfbml  : true, // parse XFBML
+			 fileUpload : true,
 			 });
 			 
 
@@ -213,7 +214,7 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 		jQuery("#carousel").carousel({ dispItems: 5, animSpeed: "slow", loop: true });		
 		jQuery("#carousel").delay(1500);	
 		jQuery("#carousel").css('margin-left', 'auto')
-		
+		jQuery('#fb_comment').val('')
     });
    
 	

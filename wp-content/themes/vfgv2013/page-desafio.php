@@ -7,7 +7,7 @@ include_once "fbmain.php";
 ?>
 <?php get_header(); ?>
 	<div id="content" class="homeHeight">
-	<?php if ($fb_user or $logged) { ?>
+	<?php if ($fb_user) { ?>
 		<?php get_template_part('topo-2013'); ?>
         <div class="desafios-on">
         	<ul>

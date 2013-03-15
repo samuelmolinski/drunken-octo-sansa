@@ -43,7 +43,7 @@
 		require_once (TEMPLATEPATH . "/class.gaparse.php");
 
 		//Init Variables
-		global $inspect, $activePost, $page_desafio_mb, $wp_query, $log, $cookieInfo, $totalComments, $loginUrl;
+		global $inspect, $activePost, $page_desafio_mb, $wp_query, $log, $cookieInfo, $totalComments, $loginUrl, $facebook;
 		$server = $_SERVER['SERVER_NAME'];
 		$cookieInfo = new GA_Parse($_COOKIE);
 		//inspect($cookieInfo);
@@ -79,6 +79,8 @@
 
 		$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => $fbconfig['appBaseUrl']));
 		
+		//inspect('first'); 
+		//inspect($loginUrl); 
 		if ($fb_user) {
 			try {
 				// Proceed knowing you have a logged in user who's authenticated.
@@ -146,12 +148,15 @@
 
 		$page_id = $signed_request["page"]["id"];
 		$like_status = $signed_request["page"]["liked"];
-		$app_data = $signed_request["app_data"];
-		//inspect($signed_request);
-		$app_data = json_decode($app_data);
+		$app_dataJSON = $signed_request["app_data"];
+		//inspect($signed_request);	
+		//inspect($app_dataJSON);
+		$app_data = json_decode($app_dataJSON);
 		$log[] = $app_data;
 		$log[] = array('$activePost', $activePost);
 		$log[] = array('$s[$app_data -> page]', $s[$app_data -> page]);		
+		//inspect($app_data);	
+		//inspect($activePost);
 
 		//redirect to new page
 		if (NULL != $app_data) {
@@ -160,13 +165,13 @@
 			//the redirect doesn't receive appdata
 
 			//check if it is closed if so use activePost
-			if ($activePost != $app_data -> page) {
-				//do nothing no need to redirect
-			} elseif ($s[$app_data -> page] == 'locked') {
+			if ($activePost == $app_data->page) {
+				//do nothing, no need to redirect
+			} elseif ($s[$app_data->page] == 'locked') {
 				header('Location: ' . get_permalink($activePost));
 				exit();
 			} else {
-				$activePost = $app_data -> page;
+				$activePost = $app_data->page;
 				header('Location: ' . get_permalink($activePost));
 				exit();
 			}
@@ -188,21 +193,23 @@
 		$fbURL = FB_APP_URL;
 		$p = strpos($fbURL, '?');
 		if (FALSE === $p) {
-			//$fbURL = FB_APP_URL . '?' . $app_data;
+			$fbURL = FB_APP_URL . '?' . $app_data;
 		} else {
-			//$fbURL = FB_APP_URL . '&' . $app_data;
+			$fbURL = FB_APP_URL . '&' . $app_data;
 		}
 		
 		$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => $fbURL));
 
-		/*if (!$fb_user and !$logged) {
+		//inspect('second'); 
+		//inspect($loginUrl); 
+		if (!$fb_user and !$logged and is_single($currentPost)) {
 			//$log[] = array('$fb_user',$fb_user);
 			//$log[] = array('$logged',$logged);
 			//$log[] = array('fanpage', 'true');
 			require ('page-fanpage.php');
 			//echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
 			//exit ;
-		}*/
+		}
 
 		// prevents localhost CURL fatal error for facebook while using SSL
 		//inspect($activePost);

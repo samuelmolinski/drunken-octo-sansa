@@ -26,7 +26,7 @@ function l($o) {
 }
 
 // Create our Application instance.
-$facebook = new Facebook(array('appId' => FB_ID, 'secret' => FB_SECRET, 'cookie' => true, ));
+$facebook = new Facebook(array('appId' => FB_ID, 'secret' => FB_SECRET, 'cookie' => true, 'fileUpload' => true));
 
 //Facebook Authentication part
 $fb_user = $facebook -> getUser();
@@ -75,11 +75,19 @@ if ($fb_user) {
                     } else {
                          $fbURL = FB_APP_URL.'&'.$app_data;
                     }
-               }               
+               }     
 
-               $message = "Vestibular FGV 2013-2 / $caption<br/>\n$message<br/>\n" . FB_APP_URL;
-               $statusUpdate = $facebook -> api('/me/feed', 'post', array('message' => $message, 'picture' => $picture, 'link' => $link, 'name' => $name, 'caption' => $caption, 'description' => $description, 'source' => $source, 'place' => $place, 'tags' => $tags));
-               //$statusUpdate = $facebook -> api('/me/photos', 'post', array('message' => $message, 'source' => $picture));
+               $pictureSource = str_replace('https://www.vestibularfgv.com.br/2013CLONE/wp-content/', '../../', $picture);  
+               //print_r($picture);
+
+               if($picture != $pictureSource) {
+                    $message = "$name\n$description\n" . FB_APP_URL;
+                    //$statusUpdate = $facebook -> api('/me/feed', 'post', array('message' => $message, 'picture' => $picture, 'link' => $link, 'name' => $name, 'caption' => $caption, 'description' => $description, 'source' => $source, 'place' => $place, 'tags' => $tags));
+                    $statusUpdate = $facebook -> api('/me/photos', 'post', array('message' => $message, 'image' => '@' . $pictureSource));
+               }
+
+               //print_r($statusUpdate);
+
           } catch (FacebookApiException $e) {
                d($e);
                echo $_REQUEST['message'];
