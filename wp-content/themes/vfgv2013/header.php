@@ -1,7 +1,8 @@
 <?php
-header('P3P: CP="IE is often a NIGHTMARE"');
+header('P3P: CP="ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI"');
+//header('P3P: CP="IE is often a NIGHTMARE"');
 
-	global $activePost, $fb_user;;
+	global $activePost, $fb_user;
   	//inspect($fb_user);
 	
 ?><!doctype html>  
@@ -36,13 +37,12 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 		<script type="text/javascript">if(!window.log) {window.log = function() {log.history = log.history || [];log.history.push(arguments);if(this.console) {console.log(Array.prototype.slice.call(arguments));}};}</script>
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.colorbox.js"></script>
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/js/flexcroll.js"></script>
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/styles/colorbox.css">        
-		<!-- <script src="https://cdn.jquerytools.org/1.2.6/tiny/jquery.tools.min.js"></script> -->
-		<!--<script type="text/javascript" src="https://connect.facebook.net/pt_BR/all.js#appId=<?php echo FB_ID ?>"></script>-->
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/styles/colorbox.css">    
+
         <script type="text/javascript" src="https://connect.facebook.net/pt_BR/all.js"></script>
-		
+	
 		<script type="text/javascript">
-		   
+		
 		window.fbAsyncInit = function() {
 		
 			FB.init({

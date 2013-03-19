@@ -28,6 +28,12 @@ function formActions() {
 	//comment.val(commentLabel);
 	comment.css('color', '#B7B7B7');
 
+
+	jQuery('.inputFrase').click(function() {
+		commentSelect.focus();
+	});
+
+
 	commentSelect.focus(function() {
 		if((comment.val() == '') || (comment.val() == commentLabel)) {
 			//comment.val('');

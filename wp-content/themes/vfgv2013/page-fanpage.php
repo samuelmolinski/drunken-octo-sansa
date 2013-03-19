@@ -52,6 +52,22 @@
                 if ($queryObject->have_posts()) {while ($queryObject->have_posts()) {$queryObject->the_post();
                     $page_desafio_mb->the_meta(); 
                     $meta = $page_desafio_mb->meta; 
+
+                    //d($post->ID);
+
+                    $app_data = '';
+                    $app_data = urlencode(json_encode(array('page' => $queryObject->post->ID)));
+                    $app_data = 'app_data=' . $app_data;
+                    $fbURL = FB_APP_URL;
+                    $p = strpos($fbURL, '?');
+                    if (FALSE === $p) {
+                        $fbURL = FB_APP_URL . '?' . $app_data;
+                    } else {
+                        $fbURL = FB_APP_URL . '&' . $app_data;
+                    }
+                    
+                    $loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => $fbURL));
+
                 ?>
                     <?php if($meta['status'] == 'active') { ?>
                         <li><a href="<?php echo $loginUrl; ?>" target="_top"><img src="<?php echo $meta['fb_post_image_home']; ?>" alt="<?php the_title(''); ?>" /></a></li>
