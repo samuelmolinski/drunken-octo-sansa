@@ -17,7 +17,7 @@
 
 			/*// Start Session Fix
 			session_start();
-			$page_url = "http://www.facebook.com/vestibularfgv?sk=app_440982045925181";
+			$page_url = "http://www.facebook.com/vestibularfgv?sk=app_444250602265563";
 			if (isset($_GET["start_session"]))
 			    die(header("Location:" . $page_url));
 			$sid = session_id();

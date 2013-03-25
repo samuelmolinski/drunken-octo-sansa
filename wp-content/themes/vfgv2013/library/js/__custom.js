@@ -225,7 +225,7 @@ function submitComment() {
 function totalComments() {
 	var total = jQuery('#totalComments').val();
 	var style = 'font-family: Calibri, "Gill Sans", "Gill Sans MT", Arial, sans-serif; text-weight:600; width:108px; text-align:center; line-height:.9em; display:inline-block;';
-	var imgURL = 'https://www.vestibularfgv.com.br/2013CLONE/wp-content/themes/vfgv2013/library/images/count.png';
+	var imgURL = 'https://www.vestibularfgv.com.br/2013-2/wp-content/themes/vfgv2013/library/images/count.png';
 	var style2 = 'width:108px; height:106px; position: absolute; margin-left: 405px; margin-top: -12px; display:none;';
 	var fontSize = 'font-size: 65px;';
 	if (total.length > 2) {fontSize = 'font-size: 45px; line-height: 1.4em;'}

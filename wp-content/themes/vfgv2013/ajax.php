@@ -1,11 +1,11 @@
 <?php
 error_reporting(E_ALL);
-define('FB_BASEURL', 'https://www.vestibularfgv.com.br/2013CLONE/');
+define('FB_BASEURL', 'https://www.vestibularfgv.com.br/2013-2/');
 
-define('FB_ID', '440982045925181');
-define('FB_SECRET', 'b8716067e7df5173183aa5865b021657');
+define('FB_ID', '444250602265563');
+define('FB_SECRET', 'a6d6c2bc798781bf9cb3f03fbb37d33f');
 //define('FB_APP_URL', 'https://www.facebook.com/vestibularfgv?sk=app_127828760677303');
-define('FB_APP_URL', 'https://www.facebook.com/pages/Vestibular-FGV/141618765913092?sk=app_440982045925181');
+define('FB_APP_URL', 'https://www.facebook.com/pages/Vestibular-FGV/141618765913092?sk=app_444250602265563');
 
 include_once "inspect.php";
 //include_once "fbmain.php";
@@ -77,7 +77,7 @@ if ($fb_user) {
                     }
                }     
 
-               $pictureSource = str_replace('https://www.vestibularfgv.com.br/2013CLONE/wp-content/', '../../', $picture);  
+               $pictureSource = str_replace('https://www.vestibularfgv.com.br/2013-2/wp-content/', '../../', $picture);  
                //print_r($picture);
 
                if($picture != $pictureSource) {

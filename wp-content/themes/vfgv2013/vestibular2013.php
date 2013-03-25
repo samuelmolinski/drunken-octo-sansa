@@ -17,7 +17,7 @@
     if(NULL != $_GET['forwardURL']) {
     	$forwardURL = $_GET['forwardURL'];
     } else {
-    	$forwardURL = 'https://vestibularfgv.com.br/2013CLONE/';
+    	$forwardURL = 'https://vestibularfgv.com.br/2013-2/';
     }
     if(NULL != $_GET['page']) {
     	$page = 'page='.$_GET['page'];
@@ -43,7 +43,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Vestibular FGV</title>
 
-<meta property="fb:app_id" content="440982045925181">
+<meta property="fb:app_id" content="444250602265563">
 <meta property="fb:admins" content="100000220196116,1049257200,679573088"/>
 <meta property="og:title" content="<?php echo $title; ?>" />
 <meta property="og:url" content="<?php echo curPageURL(); ?>" />

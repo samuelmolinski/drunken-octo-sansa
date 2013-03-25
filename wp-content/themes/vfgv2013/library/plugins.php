@@ -52,7 +52,7 @@ function bones_get_socialimage() {
 function bones_facebook_connect() {
 	echo "\n" . '<!-- facebook open graph stuff -->' . "\n";
 	echo '<!-- place your facebook app id below -->';
-	echo '<meta property="fb:app_id" content="440982045925181"/>' . "\n";
+	echo '<meta property="fb:app_id" content="444250602265563"/>' . "\n";
 	global $post;	
 	echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'"/>' . "\n";
 	echo '<meta property="og:url" content="'. get_permalink() .'"/>' . "\n";
