@@ -3,7 +3,7 @@
 </div>
 <div class="inscreva-se">
     <div class="clique">
-        <a href='https://www.facebook.com/vestibularfgv/app_192759390836325'  onClick='_gaq.push(["_trackEvent", "interacao", "clicouInscrevase", "linkTop"]);' target="_blank">
+        <a href='https://www.facebook.com/vestibularfgv/app_192759390836325'  onClick='_gaq.push(["_trackEvent", "interacao", "clicouInscrevase", "linkTop"]);' target="_blank" style='text-indent: -9999em;'>
             <?php _e("clique e inscreva-se no vestibular FGV")?>
         </a>
     </div>
