@@ -78,8 +78,15 @@ if ($fb_user) {
                }               
 
                $message = "Vestibular FGV 2013-2 / $caption<br/>\n$message<br/>\n" . FB_APP_URL;
-               $statusUpdate = $facebook -> api('/me/feed', 'post', array('message' => $message, 'picture' => $picture, 'link' => $link, 'name' => $name, 'caption' => $caption, 'description' => $description, 'source' => $source, 'place' => $place, 'tags' => $tags));
-               //$statusUpdate = $facebook -> api('/me/photos', 'post', array('message' => $message, 'source' => $picture));
+               //$statusUpdate = $facebook -> api('/me/feed', 'post', array('message' => $message, 'picture' => $picture, 'link' => $link, 'name' => $name, 'caption' => $caption, 'description' => $description, 'source' => $source, 'place' => $place, 'tags' => $tags));
+               $statusUpdate = $facebook -> api(
+                                             '/me/photos',
+                                             'post', array(
+                                                       'message' => $message,
+                                                       'image' => '@' . realpath($picture),
+                                                       'source'  => $picture,
+                                                       )
+                                             );
           } catch (FacebookApiException $e) {
                d($e);
                echo $_REQUEST['message'];
