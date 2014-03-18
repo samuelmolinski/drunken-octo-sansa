@@ -25,12 +25,18 @@ function formActions() {
 	//console.debug('endDate');
 	var commentLabel = jQuery('#labelTitle').val();
 
-	comment.val(commentLabel);
+	//comment.val(commentLabel);
 	comment.css('color', '#B7B7B7');
+
+
+	jQuery('.inputFrase').click(function() {
+		commentSelect.focus();
+	});
+
 
 	commentSelect.focus(function() {
 		if((comment.val() == '') || (comment.val() == commentLabel)) {
-			comment.val('');
+			//comment.val('');
 			comment.css('color', '#565656');
 			jQuery('#main #frame #commentsDesafio #fb_comment').removeClass('tt');
 			jQuery('#fb_submit').fadeIn();
@@ -39,7 +45,7 @@ function formActions() {
 		}
 	}).blur(function() {
 		if(comment.val() == '') {
-			comment.val(commentLabel);
+			//comment.val(commentLabel);
 			comment.css('color', '#B7B7B7');
 			jQuery('#main #frame #commentsDesafio #fb_comment').addClass('tt');
 			jQuery('#fb_submit').fadeOut();
@@ -154,6 +160,32 @@ function submitComment() {
 
 		//updateStatus(jQuery('#msg').val(), jQuery('#pic').val(), jQuery('#l').val(), jQuery('#n').val(), jQuery('#cap').val(), jQuery('#des').val(), '', '', '');
 
+		//FB.login(function(response) {
+		//	if (response.authResponse) {
+				/*var access_token =   FB.getAuthResponse()['accessToken'];
+				console.log('Access Token = '+ access_token);
+
+				FB.api('me/photos', 'post', {
+					message: 'has shared Picture',
+					status: 'success',
+					access_token: access_token,
+					url: jQuery('#pic').val() 
+				}, function (response) {
+
+					if (!response || response.error) {
+						log('Error occured:', response);
+					} else {
+						log('Post ID: ', response.id);
+					}
+
+				});*/
+		//	} else {
+		//		log('User cancelled login or did not fully authorize.');
+		//	}
+		//}, {scope: 'user_photos,photo_upload,publish_stream,offline_access'});
+
+
+
 		//console.debug(l + "wp-content/themes/vfgv2013/ajax.php");
 		jQuery.ajax({
 			type : "POST",
@@ -248,7 +280,7 @@ function submitComment() {
 function totalComments() {
 	var total = jQuery('#totalComments').val();
 	var style = 'font-family: Calibri, "Gill Sans", "Gill Sans MT", Arial, sans-serif; text-weight:600; width:108px; text-align:center; line-height:.9em; display:inline-block;';
-	var imgURL = 'https://www.vestibularfgv.com.br/2013CLONE/wp-content/themes/vfgv2013/library/images/count.png';
+	var imgURL = 'https://www.vestibularfgv.com.br/2013-2/wp-content/themes/vfgv2013/library/images/count.png';
 	var style2 = 'width:108px; height:106px; position: absolute; margin-left: 405px; margin-top: -12px; display:none;';
 	var fontSize = 'font-size: 65px;';
 	if (total.length > 2) {fontSize = 'font-size: 45px; line-height: 1.4em;'}

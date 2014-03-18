@@ -8,17 +8,55 @@
 	$fbconfig['appBaseUrl'] = FB_APP_URL;
 	// "http://apps.facebook.com/thinkdiffdemo";
 
+	$browser = getBrowserName();
 	if (isset($_GET['request_ids'])) {
 		//user comes from invitation
 		//track them if you need
 	}
 	require_once ('fb/Class-User.php');
 
+			/*// Start Session Fix
+			session_start();
+			$page_url = "http://www.facebook.com/vestibularfgv?sk=app_444250602265563";
+			if (isset($_GET["start_session"]))
+			    die(header("Location:" . $page_url));
+			$sid = session_id();
+			if (!isset($_GET["sid"]))
+			{
+			    if(isset($_POST["signed_request"]))
+			       $_SESSION["signed_request"] = $_POST["signed_request"];
+			    die(header("Location:?sid=" . $sid));
+			}
+			if (empty($sid) || $_GET["sid"] != $sid)
+			    die('<script>top.window.location="?start_session=true";</script>');
+			// End Session Fix */
+
+			$facebookpageurl = FB_APP_URL;
+			$facebookappid = FB_ID;
+			 
 
 	function d($d) {
 		echo '<pre>';
 		print_r($d);
 		echo '</pre>';
+	}
+			 
+	function getBrowserName() {
+		$u_agent = $_SERVER['HTTP_USER_AGENT']; 
+		if(preg_match('/MSIE/i',$u_agent) && !preg_match('/Opera/i',$u_agent)) { 
+			$bname = 'Internet Explorer'; 
+		} elseif(preg_match('/Firefox/i',$u_agent)) { 
+			$bname = 'Mozilla Firefox'; 
+		} elseif(preg_match('/Chrome/i',$u_agent)) { 
+			$bname = 'Google Chrome'; 
+		} elseif(preg_match('/Safari/i',$u_agent)) { 
+			$bname = 'Apple Safari'; 
+		} elseif(preg_match('/Opera/i',$u_agent)) { 
+			$bname = 'Opera'; 
+		} elseif(preg_match('/Netscape/i',$u_agent)) { 
+			$bname = 'Netscape'; 
+		}
+		return $bname;
 	}
 
 
@@ -43,7 +81,7 @@
 		require_once (TEMPLATEPATH . "/class.gaparse.php");
 
 		//Init Variables
-		global $inspect, $activePost, $page_desafio_mb, $wp_query, $log, $cookieInfo, $totalComments, $loginUrl;
+		global $inspect, $activePost, $page_desafio_mb, $wp_query, $log, $cookieInfo, $totalComments, $loginUrl, $facebook;
 		$server = $_SERVER['SERVER_NAME'];
 		$cookieInfo = new GA_Parse($_COOKIE);
 		//inspect($cookieInfo);
@@ -68,44 +106,6 @@
 			print_r($o);
 			echo '</pre>';
 		}
-
-		// Create our Application instance.
-		$facebook = new Facebook(array('appId' => $fbconfig['appid'], 'secret' => $fbconfig['secret'], 'cookie' => true, ));
-
-		$userData = NULL;
-
-		//Facebook Authentication part
-		$fb_user = $facebook -> getUser();
-
-		$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => $fbconfig['appBaseUrl']));
-		
-		if ($fb_user) {
-			try {
-				// Proceed knowing you have a logged in user who's authenticated.
-				$userData = $facebook -> api('/me');
-				//inspect($userData);
-
-			} catch (FacebookApiException $e) {
-				//you should use error_log($e); instead of printing the info on browser
-				//inspect($e);  // d is a debug function defined at the end of this file
-				header("Location:".curPageURL());
-				//$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => curPageURL()));
-		
-				//header("Location: $loginUrl");
-			}
-		} else {
-			if(!$logged&&(isset($_GET['callbacklink']))) {
-				header("Location: $loginUrl");
-			}
-		}
-
-		if ($logged) {
-			//$inspect = TRUE;
-		} else {
-			//$inspect = FALSE;
-		};
-
-		//inspect(currentID());
 
 		// deciding on which post to get
 		$arg = array('post_type' => 'desafio_2013', 'order' => 'ASC');
@@ -139,19 +139,114 @@
 			$activePost = array_pop($closed);
 		}
 
-		//////////////////////////////////////////////////////////////////////////////
-		//inspect($facebook);
+
+
+		// Create our Application instance.
+		$facebook = new Facebook(array('appId' => $fbconfig['appid'], 'secret' => $fbconfig['secret'], 'cookie' => true, ));
+		$userData = NULL;
+
+		//Facebook Authentication part
+		$fb_user = $facebook -> getUser();
+		$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => $fbconfig['appBaseUrl']));
 		$signed_request = $facebook -> getSignedRequest();
 		$log[] = $signed_request;
 
 		$page_id = $signed_request["page"]["id"];
 		$like_status = $signed_request["page"]["liked"];
-		$app_data = $signed_request["app_data"];
-		//inspect($signed_request);
-		$app_data = json_decode($app_data);
-		$log[] = $app_data;
-		$log[] = array('$activePost', $activePost);
-		$log[] = array('$s[$app_data -> page]', $s[$app_data -> page]);		
+		$app_dataJSON = $signed_request["app_data"];
+		$app_data = json_decode($app_dataJSON);
+		//$log[] = $app_data;
+		//$log[] = array('$activePost', $activePost);
+		//$log[] = array('$s[$app_data -> page]', $s[$app_data -> page]);	
+		//inspect($currentPost);
+		//inspect($activePost);
+
+		//inspect('first'); 
+		//inspect($loginUrl); 
+		if($browser != "Apple Safari") {
+			if ($fb_user) {
+				try {
+					// Proceed knowing you have a logged in user who's authenticated.
+					$userData = $facebook -> api('/me');
+					//inspect($userData);
+
+				} catch (FacebookApiException $e) {
+					//you should use error_log($e); instead of printing the info on browser
+					//inspect($e);  // d is a debug function defined at the end of this file
+					header("Location:".curPageURL());
+					//$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => curPageURL()));
+			
+					//header("Location: $loginUrl");
+				}
+			} else {
+				if(!$logged&&(isset($_GET['callbacklink'])&&($browser != "Apple Safari"))) {
+					header("Location: $loginUrl");
+				} 
+			}
+		} else {
+			if ($fb_user) {
+				try {
+					// Proceed knowing you have a logged in user who's authenticated.
+					$userData = $facebook -> api('/me');
+					//inspect($userData);
+
+				} catch (FacebookApiException $e) {
+					//you should use error_log($e); instead of printing the info on browser
+					//inspect($e);  // d is a debug function defined at the end of this file
+					header("Location:".curPageURL());
+					//$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => curPageURL()));
+			
+					//header("Location: $loginUrl");
+				}
+			} elseif(!$logged&&!isset($_GET['callbacklink'])) {
+				session_start();
+				//inspect('!$logged&&!isset($_GET[\'callbacklink\'])');
+				$page_url = $facebookpageurl;
+				
+				if(NULL != $app_data) {					
+					$p = strpos($page_url, '?');
+					if (FALSE === $p) {
+						$page_url = $page_url . '?' . $app_data;
+					} else {
+						$page_url = $page_url . '&' . $app_data;
+					}
+				}
+
+				$sid = session_id();
+				if(isset($_GET['start_session'])) {	
+					//inspect('start_session');	
+					//inspect($currentPost);
+					//inspect($activePost);
+					//exit();
+					die(header("Location:".$page_url));
+				} elseif(!isset($_GET['sid'])) {	
+					//inspect('sid');	
+					//inspect($currentPost);
+					//inspect($activePost);
+					//exit();
+					die(header("Location:?sid=".session_id()));
+				} elseif(empty($sid) || $_GET['sid'] != $sid) {
+					//inspect('empty($sid) || $_GET['sid'] != $sid');	
+					//inspect($currentPost);
+					//inspect($activePost);
+					//exit();
+					?><script>top.window.location="?start_session=true";</script><?php
+				}
+			} else {
+				header("Location:".curPageURL());
+			}
+		}
+		
+
+		//inspect(currentID());
+
+		
+
+		//////////////////////////////////////////////////////////////////////////////
+		//inspect($facebook);
+		//inspect($signed_request);	
+		//inspect($app_data);
+		//inspect(NULL != $app_data);
 
 		//redirect to new page
 		if (NULL != $app_data) {
@@ -160,13 +255,15 @@
 			//the redirect doesn't receive appdata
 
 			//check if it is closed if so use activePost
-			if ($activePost != $app_data -> page) {
-				//do nothing no need to redirect
-			} elseif ($s[$app_data -> page] == 'locked') {
+			if ($activePost == $app_data->page) {
+				//do nothing, no need to redirect
+				header('Location: ' . get_permalink($activePost));
+				exit();
+			} elseif ($s[$app_data->page] == 'locked') {
 				header('Location: ' . get_permalink($activePost));
 				exit();
 			} else {
-				$activePost = $app_data -> page;
+				$activePost = $app_data->page;
 				header('Location: ' . get_permalink($activePost));
 				exit();
 			}
@@ -188,33 +285,25 @@
 		$fbURL = FB_APP_URL;
 		$p = strpos($fbURL, '?');
 		if (FALSE === $p) {
-			//$fbURL = FB_APP_URL . '?' . $app_data;
+			$fbURL = FB_APP_URL . '?' . $app_data;
 		} else {
-			//$fbURL = FB_APP_URL . '&' . $app_data;
+			$fbURL = FB_APP_URL . '&' . $app_data;
 		}
 		
 		$loginUrl = $facebook -> getLoginUrl(array('canvas' => 1, 'fbconnect' => 0, 'scope' => 'email,user_about_me,offline_access,publish_stream', 'redirect_uri' => $fbURL));
 
-		if (!$fb_user and !$logged) {
+		//inspect($fb_user); 
+		//inspect($logged); 
+		//inspect(is_single($activePost)); 
+		if (!$fb_user and !$logged and is_single($activePost)) {
 			//$log[] = array('$fb_user',$fb_user);
 			//$log[] = array('$logged',$logged);
 			//$log[] = array('fanpage', 'true');
 			require ('page-fanpage.php');
-			/*echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";*/
+			//echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
 			//exit ;
 		}
 
-		// prevents localhost CURL fatal error for facebook while using SSL
-		//inspect($activePost);
-		//inspect($currentPost);
-		//inspect(is_single($currentPost));
-		//inspect($logged);
-
-		// Gets current user information from FB
-		// only if on if not on locahost, single post (admin panel for tests) and not
-		// logged in
-		// this is needed for normal pages and singles
-		// not needed for Test admin panel
 		if (($server != '192.168.0.22') && is_single($currentPost) && !$logged) {
 			$userInfo = $facebook -> api("/$fb_user");
 		}

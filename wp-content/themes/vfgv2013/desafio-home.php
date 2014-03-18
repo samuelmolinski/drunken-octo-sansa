@@ -44,7 +44,7 @@
 			}
 		}elseif(('closed' == $status) && (FALSE != $winnerOK)) {
 		?>
-			<div id="respostassss" style="background:url(<?php bloginfo('template_url') ?>/assets/image/vencedor.png) no-repeat center center; width: 810px; height:190px;">
+			<div id="respostassss" style="background:url(<?php bloginfo('template_url') ?>/assets/image/vencedor.png) no-repeat center top; width: 810px; height:190px;">
             	<p>
 	  			  <?php 
 	  			  // print users comment first

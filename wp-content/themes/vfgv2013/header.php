@@ -1,14 +1,15 @@
 <?php
-header('P3P: CP="IE is often a NIGHTMARE"');
+header('P3P: CP="ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI"');
+//header('P3P: CP="IE is often a NIGHTMARE"');
 
-	global $activePost, $fb_user;;
+	global $activePost, $fb_user;
   	//inspect($fb_user);
 	
 ?><!doctype html>  
 <!--[if IEMobile 7 ]> <html <?php language_attributes(); ?> class="no-js iem7"> <![endif]-->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" <?php language_attributes(); ?>><meta http-equiv="x-ua-compatible" content="IE=8"> <![endif]-->
 <!--[if (gte IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
@@ -36,20 +37,20 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 		<script type="text/javascript">if(!window.log) {window.log = function() {log.history = log.history || [];log.history.push(arguments);if(this.console) {console.log(Array.prototype.slice.call(arguments));}};}</script>
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.colorbox.js"></script>
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/js/flexcroll.js"></script>
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/styles/colorbox.css">        
-		<!-- <script src="https://cdn.jquerytools.org/1.2.6/tiny/jquery.tools.min.js"></script> -->
-		<!--<script type="text/javascript" src="https://connect.facebook.net/pt_BR/all.js#appId=<?php echo FB_ID ?>"></script>-->
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/styles/colorbox.css">    
+
         <script type="text/javascript" src="https://connect.facebook.net/pt_BR/all.js"></script>
-		
+	
 		<script type="text/javascript">
-		   
+		
 		window.fbAsyncInit = function() {
 		
 			FB.init({
 			 appId  : '<?php echo FB_ID ?>',
 			 status : true, // check login status
 			 cookie : true, // enable cookies to allow the server to access the session
-			 xfbml  : true// parse XFBML
+			 xfbml  : true, // parse XFBML
+			 fileUpload : true,
 			 });
 			 
 
@@ -213,7 +214,7 @@ header('P3P: CP="IE is often a NIGHTMARE"');
 		jQuery("#carousel").carousel({ dispItems: 5, animSpeed: "slow", loop: true });		
 		jQuery("#carousel").delay(1500);	
 		jQuery("#carousel").css('margin-left', 'auto')
-		
+		jQuery('#fb_comment').val('')
     });
    
 	

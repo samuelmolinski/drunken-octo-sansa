@@ -3,7 +3,7 @@
 ?>
 <div class="rodape">
     <div class="video">
-      <a href="https://www.youtube.com/embed/pgLW7PaZY3A?rel=0&amp;wmode=transparent" title="Video tutorial Desafio FGV 2013" class="youtube">
+      <a href="https://www.youtube.com/embed/0EvFdbMieWI?rel=0&amp;wmode=transparent" title="Video tutorial Desafio FGV 2013-2" class="youtube">
         <img src="<?php bloginfo("template_directory"); ?>/assets/image/video-tutorial.png" alt="" />            	
     </a>
     </div>

@@ -2,7 +2,7 @@
 
 //Database Settings
 define("DB_HOST", "localhost");
-define("DB_NAME", "vfgv2013CLONE");
+define("DB_NAME", "vfg2013-2");
 
 //local
 //define("DB_USER", "admin");

@@ -10,13 +10,13 @@
 define('GOOGLE_API_KEY', 'AIzaSyBLxv3xZgvL-MyMHGCupCydYMnuUsrCU14');
 define('GOOGLE_ENDPOINT', 'https://www.googleapis.com/urlshortener/v1');
 define('BASEURL', 'http://vestibular.fgv.br/sites/vestibular.fgv.br/themes/vestibular/vestibular2012-2.php');
-define('FB_BASEURL', 'https://www.vestibularfgv.com.br/2013CLONE/');
+define('FB_BASEURL', 'https://www.vestibularfgv.com.br/2013-2/');
 
 
-define('FB_ID', '440982045925181');
-define('FB_SECRET', 'b8716067e7df5173183aa5865b021657');
-define('FB_APP_URL', 'https://www.facebook.com/pages/Vestibular-FGV/141618765913092?sk=app_440982045925181');
-//define('FB_APP_URL', 'https://www.facebook.com/pages/SamplePage/220134694676331?sk=app_440982045925181');
+define('FB_ID', '444250602265563');
+define('FB_SECRET', 'a6d6c2bc798781bf9cb3f03fbb37d33f');
+define('FB_APP_URL', 'https://www.facebook.com/pages/Vestibular-FGV/141618765913092?sk=app_444250602265563');
+//define('FB_APP_URL', 'https://www.facebook.com/pages/SamplePage/220134694676331?sk=app_444250602265563');
 
 
 // Get Bones Core Up & Running!

@@ -59,6 +59,14 @@
 <?php }}?>
 </ul>
 </div>
+<?php 
+	//inspect($queryObject->post_count);
+	if($queryObject->post_count <= 5 ){ ?>
+		<style>
+			.carousel-next {display: none;}
+		</style>
+	<?php }
+?>
 <script>
 		// initialize tooltip
 	jQuery("div.company[title]").tooltip({

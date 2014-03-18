@@ -47,7 +47,7 @@
 		$user = new User();	
 		
 		$ok = $user->actionInsert($data['fb_ID'], $data['fb_name'], $data['fb_comment'], $data['post_ID']);
-		inspect($ok);
+		//inspect($ok);
 		//$ok = $user->getByFBId(4321);
 		
 		//echo $ok->fb_ID;

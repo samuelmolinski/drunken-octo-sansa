@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Vestibular FGV</title>
 
-<meta property="fb:app_id" content="440982045925181">
+<meta property="fb:app_id" content="444250602265563">
 <meta property="fb:admins" content="100000220196116,1049257200,679573088"/>
 
 <script type="text/javascript">
